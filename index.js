@@ -29,3 +29,47 @@ console.log(newLine);
 
 newLine = 1 + '1';
 console.log(newLine);
+
+
+/* Перетворення типу даних (Приведення) */
+
+let num5 = 6 - '1';
+/* Неявне перетворення типу даних
+(Неявное преобразование типа данных) */
+console.log(num5);
+let thisIsNumber = Number('45'); // явне перетворювання
+let thisIsNumber2 = '45' - 0; // неявне (автоматичне)
+
+console.log(thisIsNumber2);
+
+let booleandNumber = true + 1;
+console.log(booleandNumber);
+
+/* 
+Boolean автоматично приводиться до типу Number
+true = 1
+false = 0
+
+{} - true
+'' - false
+null, undefined - false
+*/
+
+
+/* String */
+
+let str = String(45);
+let str2 = null + '';
+console.log(str2);
+
+
+let notANumber = 2 * 'Hello';
+console.log(notANumber); // Not a Number
+Number('Hello');
+
+
+/* Typeof */
+
+let box = true;
+let result = typeof box; // 'string'
+console.log(result);
