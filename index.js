@@ -1,14 +1,14 @@
-let box1 = 'Hello';
+let box;
+
+console.log(box);
 
 
-const box2 = true;
-
-console.log(box1);
-console.log(box2);
-
-box1 = 10;
-// box2 = 15;
+box = 15;
+box = 20;
 
 
-const box;
-box = 5;
+const box2 = 15;
+
+box2 = 20;
+
+console.log(box2); // Не виконається через помилку на рядку 12
