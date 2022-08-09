@@ -1,75 +1,9 @@
-let num = 0.1 + 0.2;
-
-// console.log(num);
-
-let num1 = NaN; // Not-a-number
-
-
-let a = 1 + 2;
-let b = 2 - 1;
-let c = 2 * 2;
-let d = 4 / 2;
-
-
-let notAllowed = 5 / 0;
-console.log(notAllowed);
-let divTo0 = 4 / Infinity;
-console.log(divTo0);
-
-/* +
-Складати числа
-Зклеювати строки (конкатенація)
+/*
+1. Створіть змінну і присвойте їй значення null.
+2. Створіть іншу змінну і присвойте їй значення 5.
+3. Створіть іншу змінну і присвойте їй значення '2'.
+4. Складіть змінні з пунктів 2 і 3, результат виведіть у консоль. Який тип даних ви отримали?
+5. Від змінної з пункту 3 відніміть змінну з пункту два. Результат виведіть на консоль. Який тип даних ви отримали?
+6. До змінної з пункту 1 додайте змінну з пункту 2. Результат виведіть на консоль. Який тип даних ви отримали?
+7.А який результат ви отримаєте, якщо скласти 10 і undefined?
 */
-
-let newLine = 'HEllo' + 'you';
-console.log(newLine);
-
-newLine = 5 + 'Hello';
-console.log(newLine);
-
-newLine = 1 + '1';
-console.log(newLine);
-
-
-/* Перетворення типу даних (Приведення) */
-
-let num5 = 6 - '1';
-/* Неявне перетворення типу даних
-(Неявное преобразование типа данных) */
-console.log(num5);
-let thisIsNumber = Number('45'); // явне перетворювання
-let thisIsNumber2 = '45' - 0; // неявне (автоматичне)
-
-console.log(thisIsNumber2);
-
-let booleandNumber = true + 1;
-console.log(booleandNumber);
-
-/* 
-Boolean автоматично приводиться до типу Number
-true = 1
-false = 0
-
-{} - true
-'' - false
-null, undefined - false
-*/
-
-
-/* String */
-
-let str = String(45);
-let str2 = null + '';
-console.log(str2);
-
-
-let notANumber = 2 * 'Hello';
-console.log(notANumber); // Not a Number
-Number('Hello');
-
-
-/* Typeof */
-
-let box = true;
-let result = typeof box; // 'string'
-console.log(result);
