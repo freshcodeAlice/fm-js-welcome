@@ -1,38 +1,32 @@
-/* Об'явлення функції
+/* 
+Об'явлена функція - Function Declaration
+
 function ім'я_функції(argument1, argument2) {
     тіло функції
 }
+
+
+ім'я_функції(арг1, арг2)
 */
 
 
-function greetingUser(userName){
-    console.log('Привіт, ', userName);
+
+/* Function Expression - Функціональний вираз (Функциональное выражение)
+
+const ім'я_функції = function (arg1, arg2) {
+    тіло функції
 }
 
-/* Використання функції */
-greetingUser('Alex'); // аргумент функції
-greetingUser('Queen');
-greetingUser('Bly sky');
+ім'я_функції(арг1, арг2)
 
-
-/* Створіть функцію, яка приймає число, додає до нього 5 і виводить результат на консоль
 */
 
-function addFiveToNumber(number) {
-    let result = Number(number) + 5;
-    console.log(result);
+
+/*
+Arrow Function - Стрілкова (Стрелочная) функція
+
+const ім'я_функції = (arg1, arg2) => {
+    тіло функції
 }
 
-addFiveToNumber(5);
-
-
-/*   Функція, яка складає два числа і повертає результат розрахунку */
-
-function addTwoNumbers(num1, num2) {
-    const result = num1 + num2;
-    return result;
-}
-
-
-let functionResult = addTwoNumbers(2, 5);
-console.log(functionResult);
+*/
