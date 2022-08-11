@@ -1,31 +1,53 @@
-/* Тернарний оператор 
-
-let result = умова ? операнд1 : операнд2;
-
-*/
-
-let age = 18;
-let isAdult = age < 16 ? 'not adult' : 'adult'; 
+// const value = Number(prompt('Введіть число'));
 
 
-/* 
-(булева змінна login - true/false)
-Створіть змінну viewMode, яка у випадку авторизованного користувача має містити рядок 'authMode', а у випадку неавторизованого - 'unauth'
+// if (monthNumber === 1) {
+//     //
+// } else if(monthNumber === 2) {
+//     //
+// } else if (monthNumber === 3) {
+//     ///
+// } else {
+//     /////
+// }
 
-*/
+// switch (вираз) {
+//     case значення_виразу: робимо щось одне;
+//     case значення2_виразу: робимо щось інше;
+//     case значення3_виразу: робимо щось інше;
+//     default: робимо щось, якщо інші значення не підійшли
+// }
 
 
-let login = true;
+let monthNumber = Number(prompt('Введіть число'));
 
-let viewMode = login ? 'authMode' : 'unauth';
-
-
-/*
-
-Якщо число входить в діапазон від 6 до 12, то у змінній результат має міститись рядок 'in', в протилежному випадку - рядок 'out';
-
-
-*/
-let number;
-
-let result = (number >= 6 && number <= 12) ? 'in' : 'out';
+switch (monthNumber) {
+    case 1: 
+    case 2: 
+    case 12: {
+        console.log('зима'); 
+        break;
+    }
+    case 3: 
+    case 4: 
+    case 5: {
+        console.log('весна');
+        break;
+    }
+    case 6: 
+    case 7: 
+    case 8: {
+        console.log('літо');
+        break;
+    }
+    case 9: 
+    case 10: 
+    case 11: {
+        console.log('осінь');
+        break;
+    }
+    
+    default: {
+        console.log('Введи число від 1 до 12')
+    }
+}
