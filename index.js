@@ -1,53 +1,32 @@
-// const value = Number(prompt('Введіть число'));
+/*
+prompt
+Виведіть користувачу пропозицію меню:
+1 - Сік
+2 - Вода
+3 - Кава
+4 - Чай
+5 - Лимонад
 
+Вивести в консоль "Сік", чи "Вода"
+Зробити через switch-case
+*/
 
-// if (monthNumber === 1) {
-//     //
-// } else if(monthNumber === 2) {
-//     //
-// } else if (monthNumber === 3) {
-//     ///
-// } else {
-//     /////
-// }
+const userChoise = prompt('Оберіть напій:\n 1 - Сік\n 2 - Вода\n 3 - Кава\n 4 - Чай\n5 - Лимонад');
 
-// switch (вираз) {
-//     case значення_виразу: робимо щось одне;
-//     case значення2_виразу: робимо щось інше;
-//     case значення3_виразу: робимо щось інше;
-//     default: робимо щось, якщо інші значення не підійшли
-// }
-
-
-let monthNumber = Number(prompt('Введіть число'));
-
-switch (monthNumber) {
-    case 1: 
-    case 2: 
-    case 12: {
-        console.log('зима'); 
+switch (userChoise) {
+    case '1': {
+        console.log('Сік');
         break;
     }
-    case 3: 
-    case 4: 
-    case 5: {
-        console.log('весна');
+    case '2': {
+        console.log('Вода');
         break;
     }
-    case 6: 
-    case 7: 
-    case 8: {
-        console.log('літо');
+    case '3': {
+        console.log('Кава');
         break;
     }
-    case 9: 
-    case 10: 
-    case 11: {
-        console.log('осінь');
-        break;
-    }
-    
     default: {
-        console.log('Введи число від 1 до 12')
+        console.log('Оберіть щось із меню')
     }
 }
