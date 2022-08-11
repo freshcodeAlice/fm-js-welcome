@@ -1,54 +1,31 @@
-/* 
+/* Тернарний оператор 
 
-1. Напишіть функцію, яка приймає два числа і повертає те, що більше
-
-2. Напишіть іншу функцію, яка знаходить середнє аріфметичне з двох чисел.
-Середнє аріфметичне значення = одне число + друге число / кількість чисел
-
-3. Функція, яка приймає одне число і визначає, чи є воно парним (четным)
+let result = умова ? операнд1 : операнд2;
 
 */
 
-//1
-
-let value1 = Number(prompt('Введіть перше число')); // String
-let value2 = Number(prompt('Введіть друге число'));
-
-function getBigger(num1, num2) {
-    if(num1 > num2) {
-        return num1; 
-    } else {
-        return num2;
-    }
-}
-
-let result = getBigger(value1, value2);
-console.log(result);
+let age = 18;
+let isAdult = age < 16 ? 'not adult' : 'adult'; 
 
 
-//2
+/* 
+(булева змінна login - true/false)
+Створіть змінну viewMode, яка у випадку авторизованного користувача має містити рядок 'authMode', а у випадку неавторизованого - 'unauth'
 
-function average(num1, num2) {
-    let avrg = (num1 + num2) / 2;
-    return avrg;
-}
-
-
-let res2 = average(value1, value2);
-console.log(res2);
-
-// 3
-
-function isEven(num) {
-    // if (num % 2 === 0) {
-    //     return true;
-    // } else {
-    //     return false;
-    // }
-
-    return num % 2 === 0 //скорочений результат
+*/
 
 
-    return !(num % 2) //дуже скорочений результат
+let login = true;
 
-}
+let viewMode = login ? 'authMode' : 'unauth';
+
+
+/*
+
+Якщо число входить в діапазон від 6 до 12, то у змінній результат має міститись рядок 'in', в протилежному випадку - рядок 'out';
+
+
+*/
+let number;
+
+let result = (number >= 6 && number <= 12) ? 'in' : 'out';
