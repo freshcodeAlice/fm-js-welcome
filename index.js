@@ -1,37 +1,72 @@
-function sum(a, b){ // determinated function
-    return a + b;
+/* DRY 
+Don`t 
+repeat
+yourself
+*/
+
+// Loops - Цикли
+
+// while (умова) {
+//     код повторюється, поки умова = true
+// }
+
+
+let iterator = 0;
+/* Прохід циклу (коло) наз. ітерація */
+while (iterator < 10 ) {
+    console.log(iterator);
+    iterator++;
+}
+//iterator
+/* Break зупиняє цикл */
+
+while(true) {
+    console.log('Не вірно');
+    break;
 }
 
-/*   
-Детермінована функція - це функція, яка при одних і тих же аргументах ЗАВЖДИ повертає один і той самий результат
+
+/* Задача: зробити 10 повторів циклу, вивести на консоль парні значення лічильника */
+
+/* Continue - перехід одразу на наступну ітерацію */
+
+let i = 0;
+while (i++<10) {
+    if(i % 2) {
+        continue;
+    }
+    console.log(i);
+
+}
+
+
+/*
+Дан пароль = qwerty1234
+
+Запитуйте у користувача пароль через prompt, поки він не співпаде з тим, що лежить в змінній
 
 */
 
-sum(2,2);
+let pass = qwerrt1234;
 
-let variable = 5;
 
-function addToNumberSomeVariable(a) { // НЕДЕТЕРМІНОВАНА ФУНКЦІЯ
-    return a + variable;
+while(true) {
+    let userPass = prompt('Введіть свій пароль');
+    if(userPass === pass) {
+        break;
+    }
 }
 
-addToNumberSomeVariable(5);
-
-variable = 20;
-
-addToNumberSomeVariable(5);
 
 
-////
+//////
 
-/* Side effect - Побічний ефект чи Побочный еффект */
 
-console.log('Hello');
-alert();
-fetch(); // Запити на сервер або будь-які міжмережеві запити
+// do {
+//     тут блок коду, який буде повторювано виконуватись
+// } while (умова)
 
-/* Чиста функція (Pure function):
-1. Детермінована функція
-2. Не має побічних ефектів
 
-*/
+do {
+    let userPass = prompt('Введіть свій пароль');
+} while (userPass !== pass)
