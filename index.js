@@ -1,58 +1,61 @@
-// function sum(a, b){
-//     return a + b;
-// }
+function sum(a, b){
+    return a + b;
+}
 
-// function sub(a, b) {
-//     return a - b;
-// }
+function sub(a, b) {
+    return a - b;
+}
 
-// function multy(a, b) {
-//     return a * b;
-// }
+function multy(a, b) {
+    return a * b;
+}
 
-// function div(a, b){
-//     return a / b;
-// }
-
-
-// function calculator(){
-//     let a = Number(prompt('Введіть перше число'));
-//     let b = Number(prompt('Введіть друге число'));
-
-//     let action = prompt('Введіть потрібну дію: +, -, *, /');
-//     let result;
-//     switch (action) {
-//         case '+':
-//             result = sum(a,b);
-//             break;
-//         case '-':
-//             result = sub(a,b);
-//             break;
-//         case '*':
-//             result = multy(a,b);
-//             break;
-//         case '/':
-//             result = div(a,b);
-//             break;
-//         default:
-//         result = 'Введіть правильну дію';
-//     }
-//     console.log(result);
-
-// }
+function div(a, b){
+    return a / b;
+}
 
 
-// calculator();
+function calculator(){
+    let a = Number(prompt('Введіть перше число'));
+    let b = Number(prompt('Введіть друге число'));
+
+    let action = prompt('Введіть потрібну дію: +, -, *, /');
+    let f = null;
+    switch (action) {
+        case '+':
+            f = sum;
+            break;
+        case '-':
+            f = sub;
+            break;
+        case '*':
+            f = multy;
+            break;
+        case '/':
+            f = div;
+            break;
+        default:
+            break;
+    }
+    if (typeof f === 'function') {
+        let result = f(a,b);
+        console.log(result);
+    } else {
+        console.log('Введіть правильну дію')
+    }
+ 
+ 
+    // Error "is not a function" -> f не містить посилання на функцію
+
+}
+
+
+ calculator();
 
 
 
 
 //////////
-
-
-function sum(a, b){
-    return a + b;
-}
 
 let superFunction = sum;
 sum(2, 2);
