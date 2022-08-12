@@ -34,6 +34,7 @@ function calculator(){
 
     let action = prompt('Введіть потрібну дію: +, -, *, /');
     let result;
+    debugger;
     switch (action) {
         case '+':
             result = sum(a,b);
@@ -50,6 +51,24 @@ function calculator(){
         default:
         result = 'Введіть правильну дію';
     }
+
+    // if (action === '+') {
+    //     result = sum(a,b);
+    // } else if (action === '-') {
+    //     result = sub(a,b);
+    // } else if (action === '*') {
+    //     result = multy(a,b);
+    // } else if (action === '/') {
+    //     result = div(a,b);
+    // } else {
+    //     result = 'Введіть правильну дію';
+    // }
+
+
+
     console.log(result);
 
 }
+
+
+calculator();
