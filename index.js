@@ -1,74 +1,77 @@
-/*
+// function sum(a, b){
+//     return a + b;
+// }
 
-Зробити калькулятор =)
+// function sub(a, b) {
+//     return a - b;
+// }
 
-Користувач послідно (одне за одним) вводить
-- Перше число
-- Друге число
-- Один з варіантів: +, -, *, /
+// function multy(a, b) {
+//     return a * b;
+// }
 
-Кожну дію зробити окремою функцією. Весь калькулятор - це теж окрема функція, роль якої - спитати у користувача два числа і дію і повернути йому результат в якості alert
+// function div(a, b){
+//     return a / b;
+// }
 
-*/
+
+// function calculator(){
+//     let a = Number(prompt('Введіть перше число'));
+//     let b = Number(prompt('Введіть друге число'));
+
+//     let action = prompt('Введіть потрібну дію: +, -, *, /');
+//     let result;
+//     switch (action) {
+//         case '+':
+//             result = sum(a,b);
+//             break;
+//         case '-':
+//             result = sub(a,b);
+//             break;
+//         case '*':
+//             result = multy(a,b);
+//             break;
+//         case '/':
+//             result = div(a,b);
+//             break;
+//         default:
+//         result = 'Введіть правильну дію';
+//     }
+//     console.log(result);
+
+// }
+
+
+// calculator();
+
+
+
+
+//////////
+
 
 function sum(a, b){
     return a + b;
 }
 
-function sub(a, b) {
-    return a - b;
+let superFunction = sum;
+sum(2, 2);
+superFunction(2,4);
+
+
+function doingSomething(arg1, arg2, fun) {
+    /////////////
+   let result = fun(arg1, arg2);
+   return result;
 }
 
-function multy(a, b) {
-    return a * b;
-}
+/* High Order Function (HOF) - Функція вищого порядку (Функция высшего порядка) - це функція, яка приймає іншу функцію в якості аргументу.
 
-function div(a, b){
-    return a / b;
-}
+Callback - Коллбек (функція зворотнього виклику) (функция обратного вызова) - це функція, ЯКУ передали як аргумент іншій функції
+*/
 
+doingSomething(2, 4, sum);
 
-function calculator(){
-    let a = Number(prompt('Введіть перше число'));
-    let b = Number(prompt('Введіть друге число'));
-
-    let action = prompt('Введіть потрібну дію: +, -, *, /');
-    let result;
-    debugger;
-    switch (action) {
-        case '+':
-            result = sum(a,b);
-            break;
-        case '-':
-            result = sub(a,b);
-            break;
-        case '*':
-            result = multy(a,b);
-            break;
-        case '/':
-            result = div(a,b);
-            break;
-        default:
-        result = 'Введіть правильну дію';
-    }
-
-    // if (action === '+') {
-    //     result = sum(a,b);
-    // } else if (action === '-') {
-    //     result = sub(a,b);
-    // } else if (action === '*') {
-    //     result = multy(a,b);
-    // } else if (action === '/') {
-    //     result = div(a,b);
-    // } else {
-    //     result = 'Введіть правильну дію';
-    // }
-
-
-
-    console.log(result);
-
-}
-
-
-calculator();
+doingSomething(3, 5, function (a, b) {
+    return a*b
+})
