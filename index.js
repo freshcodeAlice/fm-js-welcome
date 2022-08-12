@@ -1,80 +1,37 @@
-function sum(a, b){
+function sum(a, b){ // determinated function
     return a + b;
 }
 
-function sub(a, b) {
-    return a - b;
-}
+/*   
+Детермінована функція - це функція, яка при одних і тих же аргументах ЗАВЖДИ повертає один і той самий результат
 
-function multy(a, b) {
-    return a * b;
-}
-
-function div(a, b){
-    return a / b;
-}
-
-
-function calculator(){
-    let a = Number(prompt('Введіть перше число'));
-    let b = Number(prompt('Введіть друге число'));
-
-    let action = prompt('Введіть потрібну дію: +, -, *, /');
-    let f = null;
-    switch (action) {
-        case '+':
-            f = sum;
-            break;
-        case '-':
-            f = sub;
-            break;
-        case '*':
-            f = multy;
-            break;
-        case '/':
-            f = div;
-            break;
-        default:
-            break;
-    }
-    if (typeof f === 'function') {
-        let result = f(a,b);
-        console.log(result);
-    } else {
-        console.log('Введіть правильну дію')
-    }
- 
- 
-    // Error "is not a function" -> f не містить посилання на функцію
-
-}
-
-
- calculator();
-
-
-
-
-//////////
-
-let superFunction = sum;
-sum(2, 2);
-superFunction(2,4);
-
-
-function doingSomething(arg1, arg2, fun) {
-    /////////////
-   let result = fun(arg1, arg2);
-   return result;
-}
-
-/* High Order Function (HOF) - Функція вищого порядку (Функция высшего порядка) - це функція, яка приймає іншу функцію в якості аргументу.
-
-Callback - Коллбек (функція зворотнього виклику) (функция обратного вызова) - це функція, ЯКУ передали як аргумент іншій функції
 */
 
-doingSomething(2, 4, sum);
+sum(2,2);
 
-doingSomething(3, 5, function (a, b) {
-    return a*b
-})
+let variable = 5;
+
+function addToNumberSomeVariable(a) { // НЕДЕТЕРМІНОВАНА ФУНКЦІЯ
+    return a + variable;
+}
+
+addToNumberSomeVariable(5);
+
+variable = 20;
+
+addToNumberSomeVariable(5);
+
+
+////
+
+/* Side effect - Побічний ефект чи Побочный еффект */
+
+console.log('Hello');
+alert();
+fetch(); // Запити на сервер або будь-які міжмережеві запити
+
+/* Чиста функція (Pure function):
+1. Детермінована функція
+2. Не має побічних ефектів
+
+*/
