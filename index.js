@@ -7,8 +7,24 @@
 */
 
 const cat = {
-} // Літеральне створення об'єкта
+    name: 'Murzik',
+    color: 'Red',
+    breed: 'Dvorovyi osobluvij',
+    age: 2,
+    eat: function() {
+        return 'I am eating'
+    },
+    sleep: function() {
+        return 'zzzzzz'
+    }
+} 
 
-const cat2 = Object(); //Функція-конструктор
+//alert(cat); // [object Object]
 
-const cat3 = new Object(); //Функція-конструктор
+cat.age++;
+
+// console.log(cat);
+
+cat.sleep = undefined; // BAD PRACTICE
+
+delete cat.sleep; // Good practice
