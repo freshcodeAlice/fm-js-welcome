@@ -28,3 +28,13 @@ cat.age++;
 cat.sleep = undefined; // BAD PRACTICE
 
 delete cat.sleep; // Good practice
+
+/// Adding properties
+
+cat.girlfriend = 'Murka';
+
+/*
+
+Визначте у себе кота, опишіть його властивості і декілька методів - бігти, спати, нявкати
+
+*/
