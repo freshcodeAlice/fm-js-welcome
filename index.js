@@ -1,20 +1,20 @@
-
-// 2+2=4
-
-function greeting() {
-    return 'Hello to you';
+function greetingUser(user){ 
+    user.age = 20;
+    return `Hello, ${user.name} ${user.surname}`
 }
 
-let userName = 'Alex';
 
-console.log(`hello, ${userName}`);
+let user = {
+    name: 'John',
+    surname: 'Doe',
+    age: 15
+}
 
-console.log(`2+2 = ${2+2}`);
+greetingUser(user); // 'Hello, John Doe'
 
-console.log(`${greeting()}`);
+let user2 = {
+    name: 'Joakin',
+    lastname: 'Phenix'
+}
 
-
-const one = Number(prompt('One number'));
-const two = Number(prompt('Second number'));
-
-alert(`${one} + ${two} = ${one+two}`);
+console.log(greetingUser(user2));
