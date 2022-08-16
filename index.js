@@ -1,56 +1,53 @@
-/* Обчислювальні властивості */
+/*
+
+Задача: вивести користувачу привітання, залежно від значення, яке він ввів
+
+*/
+let greets = {
+    15: 'Hi',
+    17: 'Ya, whats up',
+    18: 'Hello',
+    30: 'Good morning!'
+}
+
+let valueFromUser = 18;
+
+greets[18]; // Hello
 
 
-const user = {
-    'name': 'John', // Ключ 'name', значення - 'John'
-    'favorite color': 'red',
-    0: 'value'
+let obj1 = {
+    [valueFromUser]: 'Hello'
 }
 
 
-/* Ключем в об'єкті може бути рядок або тип даних Symbol */
 
-// . - Оператор доступу за ім'ям властивості
+/*
 
-user.name // 'John'
-user['name'] // 'John'
-// user.'favorite color' // syntax error
-// user.0 // syntax error
-
-/// [] - Оператор доступу до обчислюваної властивості (вычисляемое свойство - Computed Property), до її значення
-
-let name = 'Sam';
-
-user[name]; // === user.Sam
-user['favorite color'] // red
-user[0]; // 'value'
-
-
-////
-
-
-let key = 'a';
+Задача: прийняти від користувача (через промпт) назву дня тижня і видати в алерт що заплановано у користувача у цей день. Об'єкт з планами виглядає так:
 
 
 const obj = {
-    a: 5
+    Mon: 'drive lesson',
+    Tue: 'dantist visit',
+    Wed: 'go to party',
+    Thu: 'hard work',
+    Fri: 'chill',
+    Sat: 'go to park'
 }
 
 
-obj.key // undefined
-obj[key] // 5
+*/
 
 
 
-
-////
-
-
-const someObj = {
-    2: 10
+const obj = {
+    Mon: 'drive lesson',
+    Tue: 'dantist visit',
+    Wed: 'go to party',
+    Thu: 'hard work',
+    Fri: 'chill',
+    Sat: 'go to park'
 }
 
-someObj.2 // syntax error
-someObj[2] //10
-someObj['2'] //10
-
+let userValue = prompt('Type your week day to get your plan: \n Monday = Mon, \n Tuesday = Tue');
+alert(obj[userValue] ? obj[userValue] : 'Nothing planned' );
