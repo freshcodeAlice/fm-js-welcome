@@ -1,20 +1,27 @@
-function greetingUser(user){ 
-    user.age = 20;
-    return `Hello, ${user.name} ${user.surname}`
+/*
+
+Створіть три різні об'єкти і функцію, яка додає кожному поле 'key1' = 'value'
+
+
+*/
+
+let cat = {
+    name: 'Murzik'
+};
+
+let dog = {
+    name: 'Belka'
+};
+
+let fish = {
+    age: 2
+};
+
+function changeObject(obj) {
+    obj.key1 = 'value';
 }
 
 
-let user = {
-    name: 'John',
-    surname: 'Doe',
-    age: 15
-}
-
-greetingUser(user); // 'Hello, John Doe'
-
-let user2 = {
-    name: 'Joakin',
-    lastname: 'Phenix'
-}
-
-console.log(greetingUser(user2));
+changeObject(cat);
+changeObject(dog);
+changeObject(fish);
