@@ -1,27 +1,56 @@
-/*
-
-Створіть три різні об'єкти і функцію, яка додає кожному поле 'key1' = 'value'
+/* Обчислювальні властивості */
 
 
-*/
-
-let cat = {
-    name: 'Murzik'
-};
-
-let dog = {
-    name: 'Belka'
-};
-
-let fish = {
-    age: 2
-};
-
-function changeObject(obj) {
-    obj.key1 = 'value';
+const user = {
+    'name': 'John', // Ключ 'name', значення - 'John'
+    'favorite color': 'red',
+    0: 'value'
 }
 
 
-changeObject(cat);
-changeObject(dog);
-changeObject(fish);
+/* Ключем в об'єкті може бути рядок або тип даних Symbol */
+
+// . - Оператор доступу за ім'ям властивості
+
+user.name // 'John'
+user['name'] // 'John'
+// user.'favorite color' // syntax error
+// user.0 // syntax error
+
+/// [] - Оператор доступу до обчислюваної властивості (вычисляемое свойство - Computed Property), до її значення
+
+let name = 'Sam';
+
+user[name]; // === user.Sam
+user['favorite color'] // red
+user[0]; // 'value'
+
+
+////
+
+
+let key = 'a';
+
+
+const obj = {
+    a: 5
+}
+
+
+obj.key // undefined
+obj[key] // 5
+
+
+
+
+////
+
+
+const someObj = {
+    2: 10
+}
+
+someObj.2 // syntax error
+someObj[2] //10
+someObj['2'] //10
+
