@@ -1,87 +1,68 @@
-const array = [7,3,5,2,5];
+const array = [23, 'Hi!', {user: 'John Doe'}, true];
+
+// concat
+
+const arr6 = [1, 2, 3, 4];
+arr6.concat([2, 6, 8]);
+
+// fill
+
+const arrFive = new Array(5);
+arrFive.fill(1);
 
 
-for (let i = 0; i < array.length; i++) {
-    console.log(array[i]);
-}
+/// includes
+
+const arr2 = [2, 4, 1, 5, 1, 3, 7];
+arr2.includes(5);
 
 
-/*
+// indexOf
 
-Дан масив [3, 6, 8, 2, 3, 5, 1]. Напишіть функцію, яка приймає масив в якості аргументу і повертає суму всіх елементів масиву 
+arr2.indexOf(8);
 
-*/
+// join
 
-
-function sumArray(array) {
-    let sum = 0;
-        for (let i = 0; i < array.length; i++) {
-            sum = sum + array[i];
-        }
-    return sum;
-}
+const newArr = ['Hello', 'world', 4, 2, 'hi'];
+console.log(newArr.join(' ')); // default separator - ','
 
 
-const arr = [3, 6, 8, 2, 3, 5, 1];
-console.log(sumArray(arr));
+/// push
+
+const oldArray = [2, 3, 4, 5];
+oldArray.push(6); // додає елемент в кінець масива, повертає нову довжину масива
+
+// pop
+
+const anotherArray = [5, 6, 7, 8];
+const lastElem = anotherArray.pop(); // видаляє останній елемент масива і повертає його значення
+
+// shift
+
+const firstElem = anotherArray.shift(); // видаляє перший елемент масива і повертає його значення
+
+/// unshift - додає 1 або більше елементів на початок масива, повертає його нову довжину
+
+anotherArray.unshift(3, 6);
 
 
-/*
+// reverse
 
-Дан масив [3, 6, 8, 2, 3, 5, 1]. Написати функцію, яка знаходить найбільше значення серед елементів масива.
-
-1. Десь запам'ятати найбільше число, яке ми зустріли.
-2. Порівняти його з наступним елементом масиву. Якщо елемент масиву опиниться більшим ні те число, що ми запам'ятали, то саме цей елемент масиву стає нашим найбільшим запам'ятованим.
-
-
-let num = 5;
-let num2 = 4;
-
-if (num > num2) {
-    /// ідемо далі 
-} else {
-    num = num2;
-}
-
-*/
-
-
-function maxArray(array) {
-    let max = array[0];
-    for (let i = 1; i < array.length; i++) {
-    //    if (max >= array[i]) {
-    //     continue;
-    //    } else {
-    //     max = array[i];
-    //    }
-
-        if (max < array[i]) {
-            max = array[i];
-        }
-    }
-    return max;
-}
-
-console.log(maxArray(arr));
+const arr = [1, 2, 3, 4, 5, 6];
+arr.reverse(); // перегортає масив від останнього до першого елемента
 
 
 
 /*
 
-Написати функцію, яка знаходить середнє арифметичне всіх елементів масиву.
-Середнє арифметичне = сума всіх елементів / кількість елементів
+
+1. Дано два масиви: [1, 2, 3] i [4, 5, 6]. Об'єднайте їх у масив [1, 2, 3, 4, 5, 6] ---> concat
+2. Даний масив [1, 2, 3]. Зробіть з нього масив [3, 2, 1] --> reverse
+3. Даний масив [3, 4, 5]. Додайте йому в кінець елементи 4, 8, 10 ---> push
+4. Даний масив ['aaa', 'bbb', 'ccc']. Виведіть в консоль останній елемент та видаліть його з масива --> pop
+5. Даний масив ['3', 7, 10]. Додайте йому на початок елементи 2, 8 ---> unshift
 
 
-[3, 6, 8, 2, 3, 5, 1] // 4
+
+
 */
-
-function average(array) {
-    let sum = 0;
-    for (let i = 0; i < array.length; i++) {
-       sum += array[i];
-    }
-    let result = sum / array.length;
-    return result;
-}
-
-console.log(average(arr));
