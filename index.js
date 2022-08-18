@@ -1,35 +1,100 @@
+function square(a) {
+   return a*a;
+}
+
+const array = [1, 2, 3, 4, 5];
+
+array.forEach(square); // return undefined
+
+
+///// map()
+
+const fn = function (element, index) {
+    return element + index
+};
+
+const newArray = array.map(fn);
+console.log(newArray);
+
+
+/// array.map((element, index) => element + index);
+
+
+
 /*
 
-Задачка з *: написати функцію, яка перевіряє об'єкт на пустоту (тобто відсутність властивостей чи методів). Повертає Boolean
-const a ={
-    key: value
+1. Всім користувачам додати поле isSubscribed = false
+2. Створити новий масив користувачів, об'єкти мають бути у такому вигляді:
+{
+    fullName: 'John Doe',
+    age:...,
+    email:...
 }
 
-isEmpty(a) // false
-
-const b = {
-}
-
-isEmpty(b) // true
 */
 
 
-function isEmpty(obj) {
-    for (let key in obj) {
-        if(key) {
-            return false;
-        }
+const users = [
+    {
+        name: 'John',
+        lastName: 'Doe',
+        age: 18,
+        email: 'mail@com'
+    },
+        {
+        name: 'Jane',
+        lastName: 'Doe',
+        age: 20,
+        email: 'mail@com'
+    },
+        {
+        name: 'Josh',
+        lastName: 'Doe',
+        age: 17,
+        email: 'mail@com'
+    },
+        {
+        name: 'Jake',
+        lastName: 'Doe',
+        age: 21,
+        email: 'mail@com'
+    },
+        {
+        name: 'Jackson',
+        lastName: 'Doe',
+        age: 17,
+        email: 'mail@com'
+    },
+];
+
+function addSubscribeField(elem) {
+    elem.isSubscribed = false;
+}
+
+users.forEach(addSubscribeField);
+
+
+function newUserObject(user){
+    return {
+        fullName: `${user.name} ${user.lastName}`,
+        age: user.age,
+        email: user.email
     }
-    return true;
 }
 
-const a ={
-    key: 'value'
-}
+const newUsersArray = users.map(newUserObject);
 
-console.log(isEmpty(a)) // false
+/*
 
-const b = {
-}
+const arr = [2, 44, 11, 234, 8, 2, 4, 1];
 
-console.log(isEmpty(b)) // true
+Зробити новий масив, всі елементи якого = елемент зі старого масиву + 100
+
+*/
+
+const arr = [2, 44, 11, 234, 8, 2, 4, 1];
+
+
+const plus100 = arr.map(function (element){
+    return element + 100;
+})
