@@ -1,33 +1,37 @@
-/* Даний масив з числами:
-[0, 2, -1, 7, 11, 23, -5]
-За допомогою методу forEach виведіть на консоль тільки ті числа, які більше 0 та менше 10.
-*/
+function t(){
+    console.log(arguments); // Arguments - псевдомасив зі всіма аргументами функції, які були реально передані у функцію при її виклику
+}
 
-const array = [0, 2, -1, 7, 11, 23, -5];
 
-array.forEach(function(elem){
-    if(elem > 0 && elem < 10) {
-        console.log(elem)
-    }
-})
+console.log(t);
+console.dir(t); // консолить об'єкт з його властивостями і методами
+
+
+t(1, 2, 3, 4, 5);
+
+
+
 
 
 /*
 
-Створити масив з 10 елементів та заповнити його числами від 0 до 10 за циклом.
+Напишіть функцію, яка повертає суму БУДЬ-ЯКОЇ кількості переданих їй аргументів
 
+
+sum(2, 3) // 5
+sum(4, 7, 2, 1) // 14
 
 */
 
 
-//v1
-const arr = new Array(10);
-for (let i = 0; i < arr.length; i++) {
-  arr[i]=i;
+
+function sum() {
+    const arrayArgs = Array.from(arguments); // нормальний масив з об'єкту arguments
+    let sum = 0;
+    for (let i = 0; i < arrayArgs.length; i++) {
+        sum += arrayArgs[i]
+    }
+    return sum;
 }
 
-//v2
-const arr2 = [];
-for (let i = 0; i < 10; i++) {
-    arr2.push(i);
-  }
+console.log(sum(2, 6, 23, 65, 123, 3432));
