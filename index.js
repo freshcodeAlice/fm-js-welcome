@@ -1,100 +1,33 @@
-function square(a) {
-   return a*a;
-}
-
-const array = [1, 2, 3, 4, 5];
-
-array.forEach(square); // return undefined
-
-
-///// map()
-
-const fn = function (element, index) {
-    return element + index
-};
-
-const newArray = array.map(fn);
-console.log(newArray);
-
-
-/// array.map((element, index) => element + index);
-
-
-
-/*
-
-1. Всім користувачам додати поле isSubscribed = false
-2. Створити новий масив користувачів, об'єкти мають бути у такому вигляді:
-{
-    fullName: 'John Doe',
-    age:...,
-    email:...
-}
-
+/* Даний масив з числами:
+[0, 2, -1, 7, 11, 23, -5]
+За допомогою методу forEach виведіть на консоль тільки ті числа, які більше 0 та менше 10.
 */
 
+const array = [0, 2, -1, 7, 11, 23, -5];
 
-const users = [
-    {
-        name: 'John',
-        lastName: 'Doe',
-        age: 18,
-        email: 'mail@com'
-    },
-        {
-        name: 'Jane',
-        lastName: 'Doe',
-        age: 20,
-        email: 'mail@com'
-    },
-        {
-        name: 'Josh',
-        lastName: 'Doe',
-        age: 17,
-        email: 'mail@com'
-    },
-        {
-        name: 'Jake',
-        lastName: 'Doe',
-        age: 21,
-        email: 'mail@com'
-    },
-        {
-        name: 'Jackson',
-        lastName: 'Doe',
-        age: 17,
-        email: 'mail@com'
-    },
-];
-
-function addSubscribeField(elem) {
-    elem.isSubscribed = false;
-}
-
-users.forEach(addSubscribeField);
-
-
-function newUserObject(user){
-    return {
-        fullName: `${user.name} ${user.lastName}`,
-        age: user.age,
-        email: user.email
+array.forEach(function(elem){
+    if(elem > 0 && elem < 10) {
+        console.log(elem)
     }
-}
+})
 
-const newUsersArray = users.map(newUserObject);
 
 /*
 
-const arr = [2, 44, 11, 234, 8, 2, 4, 1];
+Створити масив з 10 елементів та заповнити його числами від 0 до 10 за циклом.
 
-Зробити новий масив, всі елементи якого = елемент зі старого масиву + 100
 
 */
 
-const arr = [2, 44, 11, 234, 8, 2, 4, 1];
 
+//v1
+const arr = new Array(10);
+for (let i = 0; i < arr.length; i++) {
+  arr[i]=i;
+}
 
-const plus100 = arr.map(function (element){
-    return element + 100;
-})
+//v2
+const arr2 = [];
+for (let i = 0; i < 10; i++) {
+    arr2.push(i);
+  }
