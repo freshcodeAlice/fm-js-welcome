@@ -1,8 +1,30 @@
-/* новий масив, кожен елемент якого = елемент зі старого масиву, *2
+/// sort()
+
+const array = [5, 3, 9, 21, 5, 1, 2, 4];
+
+//array.sort(); // default sort
+
+
+const arrayWords = ['bbb', 'abb', 'aaa', 'aba' ];
+//arrayWords.sort(); // default sort
+
+
+function compareFunction(a, b){ // функція-компаратор
+    if (b > a) {
+        return -1
+    } else {
+        return 1;
+    }
+}  
+/* returning:
+-1 - спочатку а, потім b
+0 - елементи залишаються на місці
+1 - спочатку b, потім а
+
+а і b - два сусідні елементи
+
 */
 
-const array = [2, 3, 4, 5, 1, 2];
+array.sort(compareFunction);
 
- const newArray = array.map(function(elem) {
-   return elem * 2;
- }).reverse().join(','); // chaining
+/* Написати функцію-компаратор, яка відсортує масив з числами у ЗВОРОТНЬОМУ порядку */
