@@ -50,13 +50,19 @@ const cat2 = {
 
 const catMethods = {
     run: function() {
-        console.log('Cat is running');
+        console.log(`${this.name} is running`);
     },
     meow: function () {
-        console.log('Meow!');
+        console.log(`${this.name} said Meow!`);
     }
 }
 
 
 cat.__proto__ = catMethods;
 cat2.__proto__ = catMethods;
+
+
+cat.run(); // this у методі run  буде вказувати на об'єкт, який йде до крапки.
+cat2.run();
+
+cat2.meow();
