@@ -1,24 +1,21 @@
-
-/*
-
 function MyArray(){
     this.length = 0;
+  
+}
 
+function MyProtoArray() {
     this.push = function() {
         for (let i = 0; i < arguments.length; i++) {
             this[this.length] = arguments[i];
             this.length++;
         }
-    }
-
+    },
     this.pop = function(value) {
         let lastItem = this[this.length - 1];
         delete this[this.length - 1];
         this.length--;
         return lastItem;
-    }
-
-
+    },
     this.forEach = function(fn) {
         for (let i = 0; i < this.length; i++) {
             fn(this[i]);
@@ -27,42 +24,5 @@ function MyArray(){
 }
 
 
-const arr = new MyArray();
+MyArray.prototype = new MyProtoArray();
 
-
-
-
-
-*/
-
-
-const cat = {
-    name: 'Barsik',
-    color: 'red',
-    age: 1
-};
-
-const cat2 = {
-    name: 'Murzik',
-    color: 'black',
-    age: 5
-}
-
-const catMethods = {
-    run: function() {
-        console.log(`${this.name} is running`);
-    },
-    meow: function () {
-        console.log(`${this.name} said Meow!`);
-    }
-}
-
-
-cat.__proto__ = catMethods;
-cat2.__proto__ = catMethods;
-
-
-cat.run(); // this у методі run  буде вказувати на об'єкт, який йде до крапки.
-cat2.run();
-
-cat2.meow();
