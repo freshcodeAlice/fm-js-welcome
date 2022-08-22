@@ -115,3 +115,8 @@ Math.round(Math.random())
 Boolean(0) - false
 Boolean(1) - true
 */
+
+
+catArray.forEach(function(cat){
+    cat.isMale = Boolean(Math.round(Math.random()))
+})
