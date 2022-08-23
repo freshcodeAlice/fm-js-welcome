@@ -85,19 +85,22 @@ value
 */
 
 function Accumulator(startingValue) {
-    this.value = startingValue;
+    this.checkNumber(userValue);
 }
 
 
 function AccumulatorProto() {
     this.read = function() {
         const userValue = Number(prompt('Введіть число'));
-        if(Number.isNaN(userValue)) {
+        this.checkNumber(userValue);
+    }
+
+    this.checkNumber = function (num) {
+        if(Number.isNaN(num)) {
             console.log('Це не число');
         } else {
-            this.value = userValue;
+            this.value = num;
         }
-
     }
 }
 
