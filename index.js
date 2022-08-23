@@ -1,22 +1,36 @@
 'use strict'
 
-console.log(this); // this вказує на глобальний об'єкт Window
-/* this - це контекст */
-
-function test() { // Function Declaration
-    console.log(this); // this вказує на функцію
+const newspaper = {
+    title: 'Header',
+    articles: [
+        {
+        author: '1 article',
+        date: '23-08-2022',
+        text: 'lorem'
+    },
+    {
+        author: '2 article',
+        date: '23-08-2022',
+        text: 'lorem'
+    },
+    {
+        author: '3 article',
+        date: '23-08-2022',
+        text: 'lorem'
+    },
+    {
+        author: '4 article',
+        date: '23-08-2022',
+        text: 'lorem'
+    },
+],
+    showArticles: function() {
+        this.articles.forEach((article, index) => {
+            console.log(`${this.title} ${index} - ${article.author}`); // Втрата контексту this
+        })
+    }
 }
 
-test();
+newspaper.showArticles();
 
-const test2 = function () { // Function Expression
-    console.log(this); // this вказує на функцію
-}
 
-test2();
-
-const arrow = () => { // Arrow Function не мають власного контексту
-    console.log(this);
-}
-
-arrow();
