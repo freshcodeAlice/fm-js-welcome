@@ -25,12 +25,13 @@ const newspaper = {
     },
 ],
     showArticles: function() {
-        this.articles.forEach((article, index) => {
-            console.log(`${this.title} ${index} - ${article.author}`); // Втрата контексту this
-        })
+        this.articles.forEach(newPaperLog.bind(this))
     }
 }
 
 newspaper.showArticles();
 
 
+function newPaperLog(article, index) {
+    console.log(`${this.title} ${index} - ${article.author}`); // Втрата контексту this
+}
