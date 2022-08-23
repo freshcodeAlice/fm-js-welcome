@@ -1,37 +1,91 @@
-'use strict'
+/*
+Вивести на консоль таблицю множення від 1 до 5 у вигляді:
+1х1 = 1
+1х2 = 2
+.....
+2х1 = 2
+2х2 = 4
+.....
+5х1=5
+5х2=10
+5х3
+5х4
+5х5
 
-// rest operator - ...
-// .., .., .., .., -> []
+*/
 
-function sum(a,b, ...arrayOfRestArguments) {
-    console.log(arrayOfRestArguments);
-    return a+b;
+for (let i=1; i <= 5; i++) { // 2
+    for(let j=1; j<= 5; j++) { // 1...2...3...4...5
+       // console.log(`${i} x ${j} = ${i*j}`);
+    }
 }
 
-sum(3, 4); // 7
-sum(1, 2, 3); //3
-sum(3, 2, 5, 2345, 123, 12);
 
-const arrowSum = (...restArray) => restArray.reduce((accum, current) => accum+current)
-
-
-// spred - ...
-// [] -> .., .., .., ..,
-
-const numbers = [1, 2, 32, 112, 32, 45];
-sum(...numbers);
-
-
-/* Швидкий спосіб копіювання масиву */
-const newNumber = [...numbers]
-
+const number = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
 /* 
-Склейте два масива в один, не використовуючи метод concat
+Напишіть функцію, яка знайде суму масива number
+*/
+
+function sumArray (array) {
+    // array = [1, 2, 3, 4, 5, 6];
+    let sum = 0;
+    for (let i = 0; i < array.length; i++) {
+        for(let j=0; j <= 2; j++) {
+             sum += array[i][j]
+        }
+    }
+    return sum
+}
+
+sumArray(number)
+
+
+/*
+
+Намалювати в консолі таку фігуру:
+
+*
+**
+***
+****
+*****
+******
+*******
+********
+
 */
 
 
-const arr1 = [1, 2, 3, 4, 5];
-const arr2 = [10, 11, 12, 13, 14, 15]; // [1, 2, 3, 4, 5, 10, 11, 12, 13, 14, 15];
+function drowFigure(dimension) {
+    let figure = '';
 
-const concatArray = [...arr1, ...arr2];
+    for (let i = 1; i <= dimension; i++) {
+      for( let j = 0; j < i; j++) {
+        figure+='*'
+      }    
+      figure+='\n'
+    }
+    
+    console.log(figure)
+}
+
+
+drowFigure(8);
+
+
+/*
+
+Написати функцію, яка приймає розмір фігури в аргументи і виводить ось таку фігуру:
+
+**************
+* *          *
+*   *        *
+*     *      *
+*       *    *
+*         *  *
+*           **
+**************
+
+
+*/
