@@ -1,10 +1,11 @@
-/*
-Задача: написати функцію, яка приймає рядок і повертає кількість голосних літер, що містяться в рядку.
+// Date
 
-Голосні: ['a', 'e', 'i', 'o', 'u'];
+const time1 = new Date();
 
-*/
+let sum = 0;
+for (let i = 0; i < 50000; i++) {
+  sum += i;
+}
 
-const countVowels = (str) => str.toLowerCase().split('').filter((ltr) => ['a', 'e', 'i', 'o', 'u'].includes(ltr)).length;
-
-
+const time2 = new Date();
+console.log(time2.getTime() - time1.getTime());
