@@ -67,3 +67,11 @@ const wrkr = new Worker('','',20, 2);
 
 wrkr.rate = 100; // setter
 wrkr.rate; // getter
+
+
+/*
+
+ДЗ: переписати методи Auto and Fuel task з використанням геттерів та сеттерів
+метод getFullWeight (auto), getWeight(fuel)
+
+*/
