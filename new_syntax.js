@@ -37,16 +37,7 @@ class Worker {
         // створює {}, this = {}
         this.name = name;
         this.lastName = lastName;
-        if(typeof rate !== 'number' || typeof days !== 'number') {
-            throw new TypeError('Rate and days must be a number');
-        }
-        if( days < 0 || days > 31) {
-            throw new RangeError('Days must be in 0 to 31');
-        } 
-        if (rate < 0) {
-            throw new RangeError('Rate must be a positive number');
-        }
-        this._rate = rate;
+        this.rate = rate; // виклик setter
         this.days = days;
     }
 
@@ -54,97 +45,25 @@ class Worker {
         return this._rate * this.days;
     }
 
-    setRate(value) {
-        if(typeof value !== 'number') {
-            throw new TypeError('Rate and days must be a number');
-        } 
+
+    /*
+    Сеттер - метод для встановлення значення
+    Геттер - метод для отримання значення
+    */
+
+    set rate(value) {
         if (value < 0) {
             throw new RangeError('Rate must be a positive number');
         }
         this._rate = value;
     }
-
-    getRate() {
+    
+    get rate() {
         return this._rate;
     }
 }
 
 const wrkr = new Worker('','',20, 2);
 
-
-
-/*
-
-Задача: порахувати загальну вагу автомобіля
-
-Клас авто
-Клас паливо
-
-*/
-
-class Fuel {
-    constructor (volume, density) {
-        this.volume = volume;
-        this.density = density;
-    }
-
-    getWeight() {
-        return this.volume * this.density;
-    }
-}
-
-const benzin = new Fuel(50, 0.9);
-
-const MIDDLE_WEIGHT_PASSANGER = 80;
-
-class Auto {
-    constructor(name, ownWeight, fuel, passangers) {
-        this.name = name;
-        this.ownWeight = ownWeight;
-        this.fuel = fuel;
-        this.passangers = passangers;
-    }
-
-    /// метод, що обчислює повну вагу авта на основі його власної ваги + ваги палива
-    getFullWeight() {
-        return this.ownWeight + this.fuel.getWeight() + (this.passangers * MIDDLE_WEIGHT_PASSANGER)
-    }
-}
-
-
-const auto = new Auto('BMV', 2500, benzin);
-auto.getFullWeight();
-
-
-/*
-
-Клас Friend
-У об'єкта є ім'я і кількість грошей, і друг
-Завдання - порахувати спільну кількість грошей
-
-
-*/
-
-class Friend {
-    constructor(name, amount, friend){
-        this.name = name;
-        this.amount = amount;
-        this.friend = friend;
-    }
-
-    getFullAmount() {
-        if (this.friend === null) {
-           return this.amount;
-        } 
-        if (Array.isArray(this.friend)) { // [{}, {}, {}, {}]
-          return this.amount + this.friend.reduce((sum, friend)=> sum+friend.getFullAmount(), 0);
-        }  
-        return this.amount + this.friend.getFullAmount();
-    }
-}
-const friend1 = new Friend('Alex', 5, null);
-const friend2 = new Friend('Sasha', 10, null);
-
-const myFriend = new Friend('Daria', 30, [friend1, friend2]);
-
-const me = new Friend('Alisa', 20, myFriend);
+wrkr.rate = 100; // setter
+wrkr.rate; // getter
