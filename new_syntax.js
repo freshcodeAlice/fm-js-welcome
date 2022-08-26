@@ -88,3 +88,37 @@ class Auto {
 
 const auto = new Auto('BMV', 2500, benzin);
 auto.getFullWeight();
+
+
+/*
+
+Клас Friend
+У об'єкта є ім'я і кількість грошей, і друг
+Завдання - порахувати спільну кількість грошей
+
+
+*/
+
+class Friend {
+    constructor(name, amount, friend){
+        this.name = name;
+        this.amount = amount;
+        this.friend = friend;
+    }
+
+    getFullAmount() {
+        if (this.friend === null) {
+           return this.amount;
+        } 
+        if (Array.isArray(this.friend)) { // [{}, {}, {}, {}]
+          return this.amount + this.friend.reduce((sum, friend)=> sum+friend.getFullAmount(), 0);
+        }  
+        return this.amount + this.friend.getFullAmount();
+    }
+}
+const friend1 = new Friend('Alex', 5, null);
+const friend2 = new Friend('Sasha', 10, null);
+
+const myFriend = new Friend('Daria', 30, [friend1, friend2]);
+
+const me = new Friend('Alisa', 20, myFriend);
