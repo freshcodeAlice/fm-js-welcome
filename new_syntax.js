@@ -37,14 +37,40 @@ class Worker {
         // створює {}, this = {}
         this.name = name;
         this.lastName = lastName;
-        this.rate = rate;
+        if(typeof rate !== 'number' || typeof days !== 'number') {
+            throw new TypeError('Rate and days must be a number');
+        }
+        if( days < 0 || days > 31) {
+            throw new RangeError('Days must be in 0 to 31');
+        } 
+        if (rate < 0) {
+            throw new RangeError('Rate must be a positive number');
+        }
+        this._rate = rate;
         this.days = days;
     }
 
     getSalary() {
-        return this.rate * this.days;
+        return this._rate * this.days;
+    }
+
+    setRate(value) {
+        if(typeof value !== 'number') {
+            throw new TypeError('Rate and days must be a number');
+        } 
+        if (value < 0) {
+            throw new RangeError('Rate must be a positive number');
+        }
+        this._rate = value;
+    }
+
+    getRate() {
+        return this._rate;
     }
 }
+
+const wrkr = new Worker('','',20, 2);
+
 
 
 /*
