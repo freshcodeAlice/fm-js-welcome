@@ -18,7 +18,6 @@ const user1 = new User('Alex', 'Dane', 20);
 const user2 = new User('Dari', 'Dane', 23);
 
 
-
 /*
 
 Написати клас Worker.
@@ -48,4 +47,44 @@ class Worker {
 }
 
 
+/*
 
+Задача: порахувати загальну вагу автомобіля
+
+Клас авто
+Клас паливо
+
+*/
+
+class Fuel {
+    constructor (volume, density) {
+        this.volume = volume;
+        this.density = density;
+    }
+
+    getWeight() {
+        return this.volume * this.density;
+    }
+}
+
+const benzin = new Fuel(50, 0.9);
+
+const MIDDLE_WEIGHT_PASSANGER = 80;
+
+class Auto {
+    constructor(name, ownWeight, fuel, passangers) {
+        this.name = name;
+        this.ownWeight = ownWeight;
+        this.fuel = fuel;
+        this.passangers = passangers;
+    }
+
+    /// метод, що обчислює повну вагу авта на основі його власної ваги + ваги палива
+    getFullWeight() {
+        return this.ownWeight + this.fuel.getWeight() + (this.passangers * MIDDLE_WEIGHT_PASSANGER)
+    }
+}
+
+
+const auto = new Auto('BMV', 2500, benzin);
+auto.getFullWeight();
