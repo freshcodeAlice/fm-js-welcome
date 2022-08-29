@@ -1,10 +1,26 @@
-/* Параметри за замовчанням */
+class Test {
+  constructor(value1, value2) {
+    // create {} --> this
+    this.key1 = value1;
+    this.key2 = value2;
+  }
 
+  static newMethod2(value) {
+    // щось робимо
+  }
 
-function sum(a=10, b=5) {
-  console.log(a, b);
+  method() {
+    // todo
+  }
+
 }
 
+Test.newMethod1 = function (value) {
+}
 
-sum(3, 2);
-sum();
+const obj1 = new Test(); // creating new instance
+obj1.method(); // метод екземпляра
+
+/* static methods */
+
+ Test.newMethod1();
