@@ -1,53 +1,50 @@
-/* User */
-
-
-class User {
-  constructor(name, surname, age) {
-    this.name= name;
-    this.surname = surname;
-    this.age = age;
+class Squirrel {
+  constructor(name, color) {
+    // create {} --> this
+    this.name = name;
+    this.color = color;
   }
 
-  getFullName() {
-    return `${this.name} ${this.surname}`
+  climb() {
+    return `${this.name} is climbing!`
+  }
+}
+
+class FlyingSquirrel extends Squirrel {
+    constructor(name, color, maxDistance) {
+      super(name, color); // create Squirrel {} ---> this
+      this.maxDistance = maxDistance;
+    }
+
+    fly(distance) {
+      if(distance < this.maxDistance) {
+        return `${this.name} can fly so far`
+      }
+    }
+}
+
+
+class FairySquirrell extends FlyingSquirrel {
+  constructor(name, color, maxDistance, singArray) {
+    super(name, color, maxDistance);
+    this.singArray = singArray;
+  }
+
+  singSong(song) {
+    if(this.singArray.includes(song)) {
+      return `${this.name} can song it!`
+    }
+  }
+  
+  fly() {
+    console.log('Our fairy Squirrell can fly unlimited');
   }
 }
 
 
-class Moderator extends User {
-  constructor(name, surname, age) {
-    super(name, surname, age);
+class SuperSquirrell extends FairySquirrell {
+  constructor(name, color, maxDistance, singArray) {
+    super(name, color, maxDistance, singArray);
   }
 
-  createPost(header, text) {
-
-  }
-
-  deletePost(index) {
-
-  }
 }
-
-
-class Admin extends Moderator {
-  constructor(name, surname, age, isAdmin) {
-    super(name, surname, age);
-    this.isAdmin = true;
-  }
-
-  setModerator(userId) {
-
-  }
-
-  deleteModerator() {
-
-  }
-}
-
-
-/*
-Класс Owner, який буде вміти все те, що і Адмін, плюс в нього буде поле доступу до магазину ShopAccess 
-Метод getAnnualReport
-
-
-*/
