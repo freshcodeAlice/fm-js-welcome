@@ -1,105 +1,68 @@
-class Figure {
-  constructor(sideQuantity) {
-    this.sideQuantity = sideQuantity
+class Button {
+  constructor() {
   }
-
-  getArea() {
-
-  }
+  createButton() {}
 }
 
-
-class Triangle extends Figure {
-  constructor(a, b, angle) {
-    super(3);
-    this.a = a;
-    this.b = b;
-    this.angle = angle;
-  }
-
-  get a() {
-    return this._a;
-  }
-
-  set a(value) {
-    if(value < 0) {
-      throw new RangeError('Side cannot be less than 0');
-    }
-    this._a = value;
-  }
-
-  get b() {
-    return this._b;
-  }
-  
-  set b(value) {
-    if(value < 0) {
-      throw new RangeError('Side cannot be less than 0');
-    }
-    this._b = value;
-  }
-
-  getArea() {
-    return this._a * this._b * Math.sin(this.angle);
-  }
+class IOSButton extends Button {
+  constructor(){}
+  createButton() {}
 }
 
-class Square extends Figure {
-  constructor(a) {
-    super(4);
-    this._a = a;
-  }
-
-  get a() {
-    return this._a;
-  }
-
-  set a(value) {
-    if(value < 0) {
-      throw new RangeError('Side cannot be less than 0');
-    }
-    this._a = value;
-  }
-
-  getArea() {
-    return this.a*this.a;
-  }
+class WinButton extends Button {
+  constructor(){}
+  createButton() {}
 }
 
-/* Написати аналогічний клас Circle, який буде мати метод для обчислення площі та буде інкапсулювати дані (аксессори) */
-
-
-class Circle extends Figure {
-  constructor(r) {
-    super(1); 
-    this.r = r;
-  }
-
-  getArea () {
-    return Math.PI*this.r*this.r;
-  }
-  
+class UnixButton extends Button {
+  constructor(){}
+  createButton() {}
 }
 
-
-class Rectangle extends Figure {
-  constructor(a, b) {
-  super(4);
-  this.a=a;
-  this.b = b;
-  }
-}
 
 //////
 
-/**
- * 
- * @param {Figure} figure 
- */
 
-function getFigureArea(figure) {  // поліморфічна функція
-  if( figure instanceof Figure) {
-    return figure.getArea();
+
+class UIFactory {
+  createButton(){} // створення реальної кнопки
+}
+
+class IOSUIFactory extends UIFactory {
+  createButton() {
+    return new IOSButton();
   }
-  throw new TypeError('Параметр не є фігурою')
+}
+
+
+class WinUIFactory extends UIFactory {
+  createButton() {
+    return new WinUIFactory();
+  }
+}
+
+class UnixUIFactory extends UIFactory {
+  createButton() {
+    return new UnixButton();
+  }
+}
+
+////
+
+class Program {
+  render(OS) {
+    switch(OS) {
+    case 'win': 
+    this.uiFactory = new WinUIFactory();
+    case 'unix':
+    this.uiFactory = new UnixUIFactory();
+    case 'mac':
+    this.uiFactory = new IOSUIFactory();
+    default:
+      this.uiFactory = new UIFactory();
+    }
+
+  const button = this.uiFactory.createButton();
+}
+
 }
