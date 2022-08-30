@@ -40,7 +40,7 @@ class Triangle extends Figure {
   }
 
   getArea() {
-    return this.a * this.b * Math.sin(this.angle);
+    return this._a * this._b * Math.sin(this.angle);
   }
 }
 
@@ -78,4 +78,28 @@ class Circle extends Figure {
   getArea () {
     return Math.PI*this.r*this.r;
   }
+  
+}
+
+
+class Rectangle extends Figure {
+  constructor(a, b) {
+  super(4);
+  this.a=a;
+  this.b = b;
+  }
+}
+
+//////
+
+/**
+ * 
+ * @param {Figure} figure 
+ */
+
+function getFigureArea(figure) {  // поліморфічна функція
+  if( figure instanceof Figure) {
+    return figure.getArea();
+  }
+  throw new TypeError('Параметр не є фігурою')
 }
