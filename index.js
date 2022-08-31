@@ -27,16 +27,28 @@ class Animal {
 }
 
 
-class Cat {
+class Cat extends Animal{
+  constructor(){
+    super();
+  }
 }
 
-class Dog{
+class Dog extends Animal{
+  constructor(){
+    super();
+  }
 }
 
-class Cow{
+class Cow extends Animal{
+  constructor(){
+    super();
+  }
 }
 
-class Goat {
+class Goat extends Animal{
+  constructor(){
+    super();
+  }
 }
 
 
@@ -46,37 +58,38 @@ class Goat {
  * @param {number} quantity 
  */
 
-function createChilds(Type, quantity) {
-  const arr = [];
-  for (let i = 0; i < quantity; i++) {
-    const child = new Type();
-    arr.push(child);
-  }
-    return arr
-}
 
-function createCatFamily() {
-    const cats = [new Cat(), new Cat(), new Cat()];
-    cats.forEach(cat => {
-      const childs = createChilds(Cat, 3);
-      cat.childs = childs;
+function createFamily(Type, quantity) {
+    const animals = new Array(quantity).fill(new Type());
+    animals.forEach(animal => {
+      const childs = new Array(quantity).fill(new Type());
+      animal.childs = childs;
     })
-    return cats;
-}
-
-
-function createDogFamily() {
-  const dogs = [new Dogs(), new Dogs(), new Dogs()];
-  dogs.forEach(dog => {
-    const childs = createChilds(Dog, 2);
-    dog.childs = childs;
-  })
-  return dogs;
+    return animals;
 }
 
 
 /*   Функція підрахунку кількості дітей */
 
-function countFarm(farm) {  // [[cat[cat, cat], cat[cat], cat[cat,cat,cat]], [dog[dog, dog], dog[dog]], ....]
-    // повернути кількість тварин
+/**
+ * 
+ * @param {Array of Animals} farm 
+ */
+
+function countFarm(farm) {
+  let sum = 0;
+    for (let i = 0; i < farm.length; i++) {
+      const item = farm[i];
+      if (item instanceof Animal) {
+          if (item.childs) {
+            sum+= item.childs.length;
+          } else {
+            return;
+          }
+      }
+    }
+    return sum;
 }
+
+
+const farm = [...createFamily(Cat, 3), ...createFamily(Dog, 2), ...createFamily(Cow, 5), ...createFamily(Goat, 1)];
