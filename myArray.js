@@ -35,8 +35,21 @@ class MyArray {
         }
         return newArr;
     }
-  
+   
+    [Symbol.iterator]() {
+        let i = 0;
+        return {
+            next: () => ({
+                    done: i > this.length - 1,
+                    value: this[i++]
+                })
+        }
+    }
 }
+
+const myarr = new MyArray();
+myarr.push(1, 2, 3, 4);
+
 
 /* 
 ДЗ: написати реалізацію методу flat() для MyArray()
