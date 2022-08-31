@@ -1,6 +1,7 @@
 class MyArray {
     constructor() {
         this.length = 0;
+        // TODO: реалізувати додавання елементів масиву при створенні екземпляру
     }
 
     static isMyArray(obj) {
@@ -38,6 +39,8 @@ class MyArray {
 }
 
 /* 
-Напишіть реалізацію методу map()
+ДЗ: написати реалізацію методу flat() для MyArray()
+
+new MyArray(42,2,3, 1, new MyArray(3, 2, 1, 2, new MyArray(4, 2, 1, 2)));
 
 */
