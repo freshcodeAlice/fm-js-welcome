@@ -77,18 +77,11 @@ function createFamily(Type, quantity) {
  */
 
 function countFarm(farm) {
-  let sum = 0;
-    for (let i = 0; i < farm.length; i++) {
-      const item = farm[i];
-      if (item instanceof Animal) {
-          if (item.childs) {
-            sum+= item.childs.length;
-          } else {
-            return;
-          }
-      }
-    }
-    return sum;
+    return farm.reduce((accum, item)=> {
+        if(item.childs) {
+          return accum + 1 + item.childs.length
+        }
+  },0)
 }
 
 
