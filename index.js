@@ -1,21 +1,13 @@
-// Symbol
+/*
 
+Реалізувати клас Student, який наслідується від класу User 
+User має ім'я прізвище, метод getFullName(), який повертає повне ім'я.
 
-const bl = true; // false - boolean
-const b1 = new Boolean({});
+В студента має бути рік вступу до Вузу.
+метод getCourse(), що повертає курс, на якому вчиться студент (курс має бути вирахуваним з 2022)
 
+Частина з *: 
+зробити розрахунок не через 2022, а через об'єкт Date().
+Якщо курс > 6, вивести "випустився"
 
-const str = 'hello';
-const str2 = new String('hello'); 
-
-
-const mySymbol = Symbol(); // без new!!
-
-// const symb2 = Symbol('My first symbol'); // label for human
-
-
-const obj = {
-  test: 1,
-  [mySymbol]: 123,
-  abradabra: '2123'
-}
+*/
