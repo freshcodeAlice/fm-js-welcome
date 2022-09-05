@@ -1,36 +1,54 @@
 /*
-
-Реалізувати клас Student, який наслідується від класу User 
-User має ім'я прізвище, метод getFullName(), який повертає повне ім'я.
-
-В студента має бути рік вступу до Вузу.
-метод getCourse(), що повертає курс, на якому вчиться студент (курс має бути вирахуваним з 2022)
-
-Частина з *: 
-зробити розрахунок не через 2022, а через об'єкт Date().
-Якщо курс > 6, вивести "випустився"
+Написати функцію, яка приймає розмір фігури в аргументи і виводить ось таку фігуру:
+***************
+* *           *
+*   *         *
+*     *       *
+*       *     *
+*         *   *
+*           * *
+***************
 
 */
 
-class User {
-    constructor(name, lastName) {
-        this.name = name;
-        this.lastName = lastName;
+function drowSquareWidthDiagonal(dimension){
+    let str = '';
+    for (let i = 0; i < dimension; i++) {
+            for (let j = 0; j < dimension; j++) {
+                if(i === 0 || i === dimension - 1 || j === 0 || j === dimension - 1 || i === j) {
+                    str += '*'
+                } else {
+                    str += ' '
+                }
+            }
+            str += '\n';        
     }
-
-    getFullName() {
-        return `${this.name} ${this.lastName}`;
-    }
+    return str;
 }
 
-class Student extends User {
-    constructor(name, lastName, enterYear) {
-        super(name, lastName);
-        this.enterYear = enterYear;
-    }
+console.log(drowSquareWidthDiagonal(10))
 
-    getCourse() {
-        const year = new Date().getFullYear();
-        return (year - this.enterYear > 6) ? 'graduated' : year - this.enterYear;
+
+/*
+
+Зворотня діагональ 
+
+*/
+
+function drowSquareWidthBackDiagonal(dimension){
+    let str = '';
+    for (let i = 0; i < dimension; i++) {
+            for (let j = 0; j < dimension; j++) {
+                if(i === 0 || i === dimension - 1 || j === 0 || j === dimension - 1 || i === dimension - j - 1) {
+                    str += '*'
+                } else {
+                    str += ' '
+                }
+            }
+            str += '\n';        
     }
+    return str;
 }
+
+
+console.log(drowSquareWidthBackDiagonal(10));
