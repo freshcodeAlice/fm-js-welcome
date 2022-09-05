@@ -11,3 +11,26 @@ User має ім'я прізвище, метод getFullName(), який пов�
 Якщо курс > 6, вивести "випустився"
 
 */
+
+class User {
+    constructor(name, lastName) {
+        this.name = name;
+        this.lastName = lastName;
+    }
+
+    getFullName() {
+        return `${this.name} ${this.lastName}`;
+    }
+}
+
+class Student extends User {
+    constructor(name, lastName, enterYear) {
+        super(name, lastName);
+        this.enterYear = enterYear;
+    }
+
+    getCourse() {
+        const year = new Date().getFullYear();
+        return (year - this.enterYear > 6) ? 'graduated' : year - this.enterYear;
+    }
+}
