@@ -7,7 +7,7 @@ Linked List (зв'язаний список)
 class ListItem {
     constructor(v) {
         this._value = v;
-        this.next = null;
+        this.nextItem = null;
         this.prev = null;
     }
 
@@ -16,7 +16,7 @@ class ListItem {
     }
 
     get value() {
-        return this.value
+        return this._value
     }
 }
 
@@ -38,10 +38,32 @@ class LinkedList {
             this.head = newItem;
             this.tail = newItem;
         } else {
-            this.tail.next = newItem;
+            this.tail.nextItem = newItem;
             newItem.prev = this.tail;
             this.tail = newItem;
         }
         return ++this.length;
+    }
+
+    [Symbol.iterator]() {
+        return new LinkedListIterator(this)
+    }
+
+}
+
+
+class LinkedListIterator {
+    constructor(list){
+        this.list = list;
+        this.currentNode = null;
+    }
+
+    next() {
+        this.currentNode = this.currentNode ? this.currentNode.nextItem : this.list.head;
+
+        return {
+            done: !this.currentNode,
+            value: this.currentNode ? this.currentNode.value : undefined
+        }
     }
 }
