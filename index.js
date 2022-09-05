@@ -1,54 +1,47 @@
 /*
-Написати функцію, яка приймає розмір фігури в аргументи і виводить ось таку фігуру:
-***************
-* *           *
-*   *         *
-*     *       *
-*       *     *
-*         *   *
-*           * *
-***************
+Linked List (зв'язаний список)
 
 */
 
-function drowSquareWidthDiagonal(dimension){
-    let str = '';
-    for (let i = 0; i < dimension; i++) {
-            for (let j = 0; j < dimension; j++) {
-                if(i === 0 || i === dimension - 1 || j === 0 || j === dimension - 1 || i === j) {
-                    str += '*'
-                } else {
-                    str += ' '
-                }
-            }
-            str += '\n';        
+
+class ListItem {
+    constructor(v) {
+        this._value = v;
+        this.next = null;
+        this.prev = null;
     }
-    return str;
-}
 
-console.log(drowSquareWidthDiagonal(10))
-
-
-/*
-
-Зворотня діагональ 
-
-*/
-
-function drowSquareWidthBackDiagonal(dimension){
-    let str = '';
-    for (let i = 0; i < dimension; i++) {
-            for (let j = 0; j < dimension; j++) {
-                if(i === 0 || i === dimension - 1 || j === 0 || j === dimension - 1 || i === dimension - j - 1) {
-                    str += '*'
-                } else {
-                    str += ' '
-                }
-            }
-            str += '\n';        
+    set value(v){
+        this._value = v;
     }
-    return str;
+
+    get value() {
+        return this.value
+    }
 }
 
 
-console.log(drowSquareWidthBackDiagonal(10));
+class LinkedList {
+    constructor(...args) {
+        this.length = 0;
+        this.head = null;
+        this.tail = null;
+
+        for (const item of args){
+            this.push(item);            
+        }
+    }
+
+    push(v) {
+        const newItem = new ListItem(v);
+        if (this.length === 0) {
+            this.head = newItem;
+            this.tail = newItem;
+        } else {
+            this.tail.next = newItem;
+            newItem.prev = this.tail;
+            this.tail = newItem;
+        }
+        return ++this.length;
+    }
+}
