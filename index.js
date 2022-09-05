@@ -67,3 +67,33 @@ class LinkedListIterator {
         }
     }
 }
+
+
+/*
+Написати функцію, яка приймає два зв'язаних списка та повертає новий список, який складається з двох переданих
+*/
+
+const list1 = new LinkedList(2, 3, 4);
+
+const list2 = new LinkedList(8, 9, 10);
+
+function concatList(list1, list2) {
+    return new LinkedList(...list1, ...list2);
+}
+
+// 2, 3, 4, 8, 9, 10
+
+/*
+Написати функцію, яка приймає значення і список, і шукає елемент списку з цим значенням, повертає ListItem з таким значенням
+*/
+
+function searchItem(list, value) {
+   for (let i = 0, item = list.head; i < list.length; i++) {
+        if (item.value === value) {
+            return item;
+        } else {
+            item = item.nextItem;
+        }
+   }
+   return null;
+}
