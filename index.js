@@ -1,99 +1,69 @@
-/*
-Linked List (зв'язаний список)
+const arr = [2, 4, 1, 3, 7, 3, 2, 1, 3, 5, 2, 8, 2, 4, 1];
 
-*/
-
-
-class ListItem {
-    constructor(v) {
-        this._value = v;
-        this.nextItem = null;
-        this.prev = null;
+function linearSearch(array, value) { // лінійна складність алгоритму
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === value) {
+            return i;
+        }        
     }
-
-    set value(v){
-        this._value = v;
-    }
-
-    get value() {
-        return this._value
-    }
+    return -1;
 }
 
 
-class LinkedList {
-    constructor(...args) {
-        this.length = 0;
-        this.head = null;
-        this.tail = null;
+//linearSearch(arr, 9);
 
-        for (const item of args){
-            this.push(item);            
-        }
+
+function multyTable(limit) { //квадратична (парабола)
+    const table = [];
+    for (let i = 1; i <= limit; i++) {
+        for (let j = 1; j <= limit; j++) {
+            const number = i*j;
+            table.push(`${i}*${j} = ${number}`);
+        }        
     }
+    return table;
+}
 
-    push(v) {
-        const newItem = new ListItem(v);
-        if (this.length === 0) {
-            this.head = newItem;
-            this.tail = newItem;
+// multyTable(9)
+
+
+const arr2 = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+
+function binarySearch(array, whatToFind) { // логаріфмічна складність
+    let start = 0;
+    let end = array.length - 1;
+    let middle = Math.round(start+end/2);
+    while(true) {
+        debugger;
+        if (array[middle] === whatToFind) {
+            return middle;
+        }
+        if(array[middle] < whatToFind) {
+            start = middle;
+            middle = Math.ceil((start+end)/2);
         } else {
-            this.tail.nextItem = newItem;
-            newItem.prev = this.tail;
-            this.tail = newItem;
-        }
-        return ++this.length;
-    }
-
-    [Symbol.iterator]() {
-        return new LinkedListIterator(this)
-    }
-
-}
-
-
-class LinkedListIterator {
-    constructor(list){
-        this.list = list;
-        this.currentNode = null;
-    }
-
-    next() {
-        this.currentNode = this.currentNode ? this.currentNode.nextItem : this.list.head;
-
-        return {
-            done: !this.currentNode,
-            value: this.currentNode ? this.currentNode.value : undefined
+            end = middle;
+            middle = Math.ceil((start+end)/2);
         }
     }
 }
-
 
 /*
-Написати функцію, яка приймає два зв'язаних списка та повертає новий список, який складається з двох переданих
+Переписати бінарний пошук з циклу на рекурсію
+
 */
 
-const list1 = new LinkedList(2, 3, 4);
+function binarySearchRecursive(array, whatToFind) {
+    const middle = Math.floor(array.length/2);
 
-const list2 = new LinkedList(8, 9, 10);
-
-function concatList(list1, list2) {
-    return new LinkedList(...list1, ...list2);
-}
-
-// 2, 3, 4, 8, 9, 10
-
-/*
-Написати функцію, яка приймає значення і список, і шукає елемент списку з цим значенням, повертає ListItem з таким значенням
-*/
-
-function searchItem(list, value) {
-   for (let i = 0, item = list.head; i < list.length; i++) {
-        if (item.value === value) {
-            return item;
-        } else {
-            item = item.nextItem;
-        }
-   }
-   return null;
+    if (array[middle] === whatToFind) {
+        return middle;
+    } else if (array[middle] > whatToFind) {
+        return binarySearchRecursive(array.slice(0, middle), whatToFind);
+    } else if (array[middle] < whatToFind) {
+        return middle + 1 + binarySearchRecursive(array.slice(middle+1, array.length), whatToFind);
+    } else {
+        return -Infinity;
+    }
 }
