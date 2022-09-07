@@ -67,8 +67,63 @@ https://site.ada.edu.az/~medv/acm/Docs%20e-olimp/Volume%2054/5327_files/image002
 Додатково: ігнорувати всі символи окрім дужок
 */
 
-function checkSequence(str) {
+/**
+ * 
+ * @param {String} str - Рядок, який аналізується
+ * @param {Object} options - Об'єкт налаштувань, всередині якого ми очікуємо об'єкт braces
+ * @param {Object} options.braces - Об'єкт з парами символів, які перевіряються
+ */
+
+/*
+     braces: {
+        '(': ')',
+        '[':']',
+        '{':'}',
+        '<':'>'
+    }
+*/
+
+function checkSequence(str, options) {
+    const stack = new Stack();
+    const braces = options.braces;
+    const closeBraces = Object.values(braces); // [')', ']', '}', '>']
+    // const arr = [...Object.keys(braces), ...Object.values(braces)]
+    // const newStr = str.split(['']).filter((sym)=> arr.includes(sym)); // фільтрація рядка, яка прибирає все окрім дужок
     
+    for (const symbol of str) {
+        if (!(braces[symbol] && closeBraces.includes(symbol))) {
+           continue;
+        } 
+        if (braces[symbol]) { // тоді це відкриваюча дужка
+            stack.push(symbol);
+            continue;
+        }
+        if (stack.isEmpty && closeBraces.includes(symbol)) {
+            return false;
+        }
+        const lastItemFromStack = stack.pick();
+        const correctCloseBrace = braces[lastItemFromStack];
+        if( correctCloseBrace === symbol) {
+            stack.pop();
+        } 
+    }
+
+    return stack.isEmpty;
 }
 
+
+
+
+const options = {
+    braces: {
+        '(': ')',
+        '[':']',
+        '{':'}',
+        '<':'>'
+    }
+}
+
+console.time('Timecheck');
+console.log(checkSequence('(2+2)[3-1]2(*3[9/1])', options)) //true
+console.timeEnd('Timecheck');
 
