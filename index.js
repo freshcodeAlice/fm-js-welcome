@@ -1,34 +1,73 @@
-class Queue {
-    constructor(...args){
-        this._head = 0;
-        this._tail = 0;
-        for (const item of args) {
-            this.enqueue(item);
-        }
-    }
+/*  Map (Карта, Мапа)
 
-    get size() {
-       return this._tail - this._head;
-    }
+Зберігає пари ключ-значення
+Має розмір (size)
 
-    enqueue(value) { // вставляє елемент в кінець черги
-        this[this._tail] = value;
-        this._tail++;
-        return this.size;
-    }
+Відмінності від звичайного об'єкта:
+1. Запам'ятовує елементи в тому порядку, в якому ми їх додаємо.
+2. Ключем може бути будь-який тип даних: String, Number, Boolean, BigInt, null, undefined, Function, Object
+(Об'єкти і функція передаються за посиланням)
 
-    dequeue() { //видаляє елемент з початку черги
-        const lastItem = this[this._head];
-        delete this[this._head++];
-        return lastItem;
-    }
+Ключ має бути унікальним
+*/
+
+
+const vocabulary = new Map();
+
+vocabulary.set('cat', 'кіт');
+vocabulary.set('dog', 'собака');
+vocabulary.set('eat', 'їсти');
+
+
+function translater(str, vocabulary) {
+
+    const arrayWords = str.toLowerCase().trim().split(' ');
+
+    // const translatedArray = arrayWords.map((word)=>{
+    //     if(vocabulary.has(word)){
+    //         return vocabulary.get(word);
+    //     }
+    //     return word;
+    // })
+
+    const translatedArray = arrayWords.map((word) => vocabulary.has(word) ? vocabulary.get(word) : word);
+    return translatedArray.join(' ');
 }
+
+
+translater('CAT', vocabulary);
+
 
 
 /*
 
-Реалізувати додавання елементів при створенні черги
-
-const queue = new Queue(2, 3, 1, 2, 4);
+Зв'язати користувача і його повідомлення, щоб за юзером знайти його повідомлення
 
 */
+
+
+const user = {
+    name: 'alex',
+    firstName: 'Doe',
+    id: 1
+}
+
+const user2 = {
+    name: 'John',
+    firstName: 'Doe',
+    id: 2
+}
+
+const johnMessages = ['hello', 'How are you?'];
+const alexMessages = ['hi!', 'Im fine'];
+
+
+const messageMap = new Map();
+messageMap.set(user.id, alexMessages);
+messageMap.set(user2.id, johnMessages);
+
+
+function createMessage(userId, newMessage, messageMap) {
+   const userMessages = messageMap.get(userId);
+   userMessages.push(newMessage);
+}
