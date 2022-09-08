@@ -71,3 +71,68 @@ function createMessage(userId, newMessage, messageMap) {
    const userMessages = messageMap.get(userId);
    userMessages.push(newMessage);
 }
+
+
+/* -------------------- */
+
+
+const map1 = new Map(); // <-- [[key1, value1], [key2, value2], [key3, value3]];
+
+
+/*
+
+Задача: написати функцію, яка приймає два рядка і перевіряє, чи є вони анаграммами одне до одного.
+Зробити це за допомогою Map
+
+'рама' --- 'мара'
+'test' --- 'setT' 
+1. Обидва рядки привести до одного регістру
+1.1 Однаковий розмір рядків
+2. В одному і іншому однакова кількість літер.
+
+р - 1   // Один словник-відповідник для одного слова
+а - 2
+м - 1
+
+м - 1   // Другий словник для другого слова
+а - 2
+р - 1
+
+3. Порівняти розмір словників і їхній вміст (скільки разів зустрілась та чи інша літера)
+
+
+*/
+
+
+function createVocabulary(str) {
+    const mapFromStr = new Map();
+    for (const letter of str) {
+        if (mapFromStr.has(letter)) {
+            const letterCount = mapFromStr.get(letter);
+            mapFromStr.set(letter, letterCount+1);
+        } else {
+            mapFromStr.set(letter, 1);
+        }
+       }
+    return mapFromStr;
+}
+
+
+function checkAnagram(str1, str2) {
+    if (str1.length !== str2.length) {
+        return false;
+    } 
+    const map1 = createVocabulary(str1.toLowerCase());
+    const map2 = createVocabulary(str2.toLowerCase());
+
+   if (map1.size !== map2.size) {
+    return false
+   }
+
+   for (const key of map1.keys()) {
+    if (map1.get(key) !== map2.get(key)) {
+        return false
+    } 
+   }
+   return true
+}
