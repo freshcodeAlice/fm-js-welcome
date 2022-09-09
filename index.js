@@ -46,3 +46,108 @@ const options = {
 }
 
 const {braces} = options;
+
+
+/*
+
+
+
+*/
+
+
+const userObj = {
+    name: {
+        first: 'John',
+        last: 'Doe'
+    },
+    address: {
+        city: 'Dnipro',
+        street: 'Centralna'
+    },
+    auth: {
+        login: 'johndoe@test.mail',
+        pass: 'qweerty'
+    },
+    favorites: {
+        dish: {
+            eat: 'sandwich',
+            drink: 'tea'
+        }
+    }
+}
+
+
+/*
+Витягти з об'єкта ім'я юзера і перейменувати його на firstName, 
+улюблений напій і перейменувати його на favoriteDrink
+логін і перейменувати на email
+
+
+*/
+
+
+const {
+    name: {
+        first: firstName
+    }, 
+    auth: {
+        login: email
+    }, 
+    favorites: {
+        dish: {
+            drink: favoriteDrink
+        }}} = userObj;
+
+
+
+
+/* Деструктуризація масивів */
+
+
+const arr = [1, 2, 3, 4, 5, 6];
+
+const [firstElement, secondElement] = arr;
+
+const [first, second, ...restOfArr] = arr;
+
+
+/* Деструктуризація вхідних параметрів */
+
+function getFullName({firstName, lastName, ...rest}) { //все інше окрім firstName, lastName ігнорується
+    return `${firstName} ${lastName}`
+}
+
+
+const user = {
+    firstName: 'John',
+    lastName: 'Doe'
+}
+
+
+getFullName(user)
+
+
+/*
+
+Написати функцію, яка приймає об'єкт монітора, виймає з нього розміри висоти і ширини і на їх основі повертає розмір діагоналі
+
+*/
+
+
+
+function getDiagonal({sizes: {height: {value: a}, width: {value: b}}}) {
+    return Math.sqrt(a*a+b*b);
+}
+
+
+///////
+
+
+const userArr = [{
+    userName: 'John Doe'
+}, {
+    userName: 'Jane Smith'
+}];
+
+
+const [{userName: firstUserName}] = userArr;
