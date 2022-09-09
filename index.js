@@ -1,153 +1,117 @@
-/* Деструктуризація об'єктів */
-
-
-const monitor = {
-    sizes: {
-        height: {
-            value: 30,
-            scale: 'cm'
-        },
-        width: {
-            value: 50,
-            scale: 'cm'
-        }
-    },
-    brightness: 750,
-    refresh: {
-        value: 144,
-        scale: 'Ggrc'
-    },
-    color: 'black',
-    resolution: '4K'
-}
-
-
-monitor.color; // колір
-monitor.sizes.height.value; // значення висоти
-
-// const height = monitor.sizes.height.value;
-
-//const {resolution, color: monitorColor} = monitor; //витягли значення monitor.resolution в нову змінну resolution, значення monitor.color в змінну monitorColor
-
-const {sizes: {height: {value: heightValue}, width: {value: widthValue}}} = monitor;
-
-//heightValue, widthValue - звичайні змінні
-const {sizes:{height: {scale: heightScale}, width: {scale: widthScale}}} = monitor;
-
-const {color, brightness, resolution, ...restOfMonitor} = monitor;
+let value = 10; // глобальна область видимості
 
 
 
-const options = {
-    braces: {
-        ///
-    },
-    settings: '...'
-}
+function wrapper(){
+    let value = 20; // локальна область видимості
+    console.log('WRAPPER function', value);
 
-const {braces} = options;
-
-
-/*
-
-
-
-*/
-
-
-const userObj = {
-    name: {
-        first: 'John',
-        last: 'Doe'
-    },
-    address: {
-        city: 'Dnipro',
-        street: 'Centralna'
-    },
-    auth: {
-        login: 'johndoe@test.mail',
-        pass: 'qweerty'
-    },
-    favorites: {
-        dish: {
-            eat: 'sandwich',
-            drink: 'tea'
-        }
+    return function log() {
+        console.log('LOG function', value);
     }
 }
 
 
-/*
-Витягти з об'єкта ім'я юзера і перейменувати його на firstName, 
-улюблений напій і перейменувати його на favoriteDrink
-логін і перейменувати на email
+//const fun2 = wrapper();
 
-
-*/
-
-
-const {
-    name: {
-        first: firstName
-    }, 
-    auth: {
-        login: email
-    }, 
-    favorites: {
-        dish: {
-            drink: favoriteDrink
-        }}} = userObj;
+//fun2();
 
 
 
-
-/* Деструктуризація масивів */
-
-
-const arr = [1, 2, 3, 4, 5, 6];
-
-const [firstElement, secondElement] = arr;
-
-const [first, second, ...restOfArr] = arr;
+/* */
 
 
-/* Деструктуризація вхідних параметрів */
+// function counter() {
+//     let i = 0;
+//     i++;
+//     return i;
+// }
 
-function getFullName({firstName, lastName, ...rest}) { //все інше окрім firstName, lastName ігнорується
-    return `${firstName} ${lastName}`
+
+
+function makeCounter() {
+    let i = 0;
+    return function() {
+        return i++;
+    }
+}
+
+ const fn = makeCounter();
+ fn();
+
+
+ const fn2 = makeCounter();
+
+
+ ////////////
+
+
+ function makeCounter2() {
+    let counter = 0;
+    return {
+        increment() {
+            return ++counter;
+        },
+        decrement() {
+            return --counter;
+        }
+    }
+ }
+
+ const fnObj = makeCounter2();
+
+
+
+
+ /////////////
+
+
+ function outer(arg) {
+        return function() {
+            return arg;
+        }
+ }
+
+const inner = outer();
+inner();
+
+ /*
+
+Написати функцію, яка приймає параметр і повертає іншу функцію, 
+що очікує другий параметр і повертає суму двох параметрів
+
+ */
+
+
+function createAdder(n) {
+    return function (m){
+        return n=m+n;
+    }
 }
 
 
-const user = {
-    firstName: 'John',
-    lastName: 'Doe'
+// const adder = createAdder(5);
+// adder(10);
+
+
+////////URL/////////
+// protocol - https
+// - ://
+//hostName - developer.mozilla.org
+// path - ru/docs/Learn/
+
+const createURL = function (protocol) {
+    return function (hostName) {
+        return function (path) {
+            return `${protocol}://${hostName}/${path}`
+        }
+    }
 }
 
-
-getFullName(user)
-
-
-/*
-
-Написати функцію, яка приймає об'єкт монітора, виймає з нього розміри висоти і ширини і на їх основі повертає розмір діагоналі
-
-*/
+const rememberHost = createURL('http');
+    const site1 = rememberHost('test.org');
+    const site2 = rememberHost('site.com');
+    const site3 = rememberHost('wiki.org');
 
 
-
-function getDiagonal({sizes: {height: {value: a}, width: {value: b}}}) {
-    return Math.sqrt(a*a+b*b);
-}
-
-
-///////
-
-
-const userArr = [{
-    userName: 'John Doe'
-}, {
-    userName: 'Jane Smith'
-}];
-
-
-const [{userName: firstUserName}] = userArr;
+site1();
